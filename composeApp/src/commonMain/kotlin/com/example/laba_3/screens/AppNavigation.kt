@@ -6,6 +6,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -24,11 +25,43 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.laba_3.App
+import com.example.laba_3.screens.Buttons.ScreenButtons
+import com.example.laba_3.screens.Checkboxes.Checkboxes
+import com.example.laba_3.screens.Chips.Chips
+import com.example.laba_3.screens.Date.DateScreen
+import com.example.laba_3.screens.Dialog.DialogExamples
+import com.example.laba_3.screens.Divider.dividerScreen
 import com.example.laba_3.screens.Home.Home
+import com.example.laba_3.screens.ProgressBar.ProgressBar
+import com.example.laba_3.screens.Switch.switchSreens
+import com.example.laba_3.screens.dial.dial.DialExample
+import com.example.laba_3.screens.radio.RadioButtonScreen
 import laba_3.composeapp.generated.resources.back
+import laba_3.composeapp.generated.resources.buttons
+import laba_3.composeapp.generated.resources.checkboxes
+import laba_3.composeapp.generated.resources.chips
+import laba_3.composeapp.generated.resources.date
+import laba_3.composeapp.generated.resources.dial
+import laba_3.composeapp.generated.resources.dialog
+import laba_3.composeapp.generated.resources.divider
+import laba_3.composeapp.generated.resources.progressBar
+import laba_3.composeapp.generated.resources.radio
+import laba_3.composeapp.generated.resources.switch
+import java.awt.Dialog
 
 enum class AppScreen(val title: StringResource){
-    Home(title = Res.string.home)
+    Home(title = Res.string.home),
+    Buttons(title = Res.string.buttons),
+    Checkboxes(title = Res.string.checkboxes),
+    Chips(title = Res.string.chips),
+    Date(title = Res.string.date),
+    Dialog(title = Res.string.dialog),
+    Divider(title = Res.string.divider),
+    ProgressBar(Res.string.progressBar),
+    Dial(Res.string.dial),
+    Radio(Res.string.radio),
+    Switch(Res.string.switch)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -76,8 +109,50 @@ fun AppNavigation(){
                 .padding(innerPadding)
         ) {
             composable(route = AppScreen.Home.name) {
-                Home(onNavigate = { })
+                Home(
+                    onButtonsClicked = { navController.navigate(AppScreen.Buttons.name) },
+                    onCheckboxesClicked = {navController.navigate(AppScreen.Checkboxes.name)},
+                    onChipsClicked = {navController.navigate(AppScreen.Chips.name)},
+                    onDateClicked = {navController.navigate(AppScreen.Date.name)},
+                    onDialogClicked = {navController.navigate(AppScreen.Dialog.name)},
+                    onDividerClicked = {navController.navigate(AppScreen.Divider.name)},
+                    onProgressBarClicked = {navController.navigate(AppScreen.ProgressBar.name)},
+                    radio = {navController.navigate(AppScreen.Radio.name)},
+                    switch = {navController.navigate(AppScreen.Switch.name)},
+                    dial = {navController.navigate(AppScreen.Dial.name)}
+                    )
             }
+            composable(route = AppScreen.Buttons.name) {
+                ScreenButtons(onButtonClicked = { })
+            }
+            composable(route = AppScreen.Checkboxes.name) {
+                Checkboxes()
+            }
+            composable(route = AppScreen.Chips.name) {
+                Chips(text = "Test chip", onDismiss = {})
+            }
+            composable(route = AppScreen.Date.name) {
+                DateScreen()
+            }
+            composable(route = AppScreen.Dialog.name){
+                DialogExamples()
+            }
+            composable(route = AppScreen.Divider.name){
+                dividerScreen()
+            }
+            composable(route = AppScreen.ProgressBar.name){
+                ProgressBar()
+            }
+            composable(route = AppScreen.Radio.name){
+                RadioButtonScreen()
+            }
+            composable(route = AppScreen.Switch.name){
+                switchSreens()
+            }
+            composable(route = AppScreen.Dial.name){
+                DialExample({},{})
+            }
+
             }
         }
     }
