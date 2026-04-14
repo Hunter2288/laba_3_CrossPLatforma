@@ -4,4 +4,12 @@
     <string name="buttons">Buttons</string>
     <string name="checkboxes">Checkboxes</string>
     <string name="chips">Chips</string>
+    <string name="date">Date</string>
+    <string name="feathertop_content_description">Feathertop image</string>
+    <string name="dialog">Dialog</string>
+    <string name="divider">Divider</string>
+    <string name="progressBar">ProgressBar</string>
+    <string name="radio">Radio</string>
+    <string name="switch">switch</string>
+    <string name="dial">Dial</string>
 </resources>
