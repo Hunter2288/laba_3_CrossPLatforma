@@ -16,7 +16,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun Home(onButtonsClicked: () -> Unit,) {
+fun Home(
+    onButtonsClicked: () -> Unit,
+    onCheckboxesClicked: () -> Unit
+         ) {
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -26,11 +29,14 @@ fun Home(onButtonsClicked: () -> Unit,) {
         Button(onClick = onButtonsClicked) {
             Text("Buttons")
         }
+        Button(onClick = onCheckboxesClicked) {
+            Text("Checkboxes")
+        }
     }
 }
 
 @Preview
 @Composable
 private fun PreviewHome(){
-    Home({},)
+    Home({}, {})
 }

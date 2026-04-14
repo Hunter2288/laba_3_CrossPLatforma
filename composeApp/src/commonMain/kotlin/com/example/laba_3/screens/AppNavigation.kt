@@ -25,13 +25,16 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.laba_3.screens.Buttons.ScreenButtons
+import com.example.laba_3.screens.Checkboxes.Checkboxes
 import com.example.laba_3.screens.Home.Home
 import laba_3.composeapp.generated.resources.back
 import laba_3.composeapp.generated.resources.buttons
+import laba_3.composeapp.generated.resources.checkboxes
 
 enum class AppScreen(val title: StringResource){
     Home(title = Res.string.home),
-    Buttons(title = Res.string.buttons)
+    Buttons(title = Res.string.buttons),
+    Checkboxes(title = Res.string.checkboxes)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -79,10 +82,15 @@ fun AppNavigation(){
                 .padding(innerPadding)
         ) {
             composable(route = AppScreen.Home.name) {
-                Home(onButtonsClicked = { navController.navigate(AppScreen.Buttons.name) })
+                Home(
+                    onButtonsClicked = { navController.navigate(AppScreen.Buttons.name) },
+                    onCheckboxesClicked = {navController.navigate(AppScreen.Checkboxes.name)})
             }
             composable(route = AppScreen.Buttons.name) {
                 ScreenButtons(onButtonClicked = { })
+            }
+            composable(route = AppScreen.Checkboxes.name) {
+                Checkboxes()
             }
 
             }
