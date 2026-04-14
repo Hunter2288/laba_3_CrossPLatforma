@@ -14,11 +14,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.jetbrains.annotations.TestOnly
 
 @Composable
 fun Home(
     onButtonsClicked: () -> Unit,
-    onCheckboxesClicked: () -> Unit
+    onCheckboxesClicked: () -> Unit,
+    onChipsClicked: () -> Unit
          ) {
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp),
@@ -32,11 +34,15 @@ fun Home(
         Button(onClick = onCheckboxesClicked) {
             Text("Checkboxes")
         }
+        Button(onChipsClicked){
+            Text("Chips")
+        }
+
     }
 }
 
 @Preview
 @Composable
 private fun PreviewHome(){
-    Home({}, {})
+    Home({}, {}, onChipsClicked = {})
 }
