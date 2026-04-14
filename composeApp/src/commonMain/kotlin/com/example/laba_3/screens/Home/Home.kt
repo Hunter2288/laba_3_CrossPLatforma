@@ -16,16 +16,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun Home(onNavigate: () -> Unit) {
+fun Home(onButtonsClicked: () -> Unit,) {
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp),
-        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text("Головна сторінка", style = MaterialTheme.typography.headlineMedium)
         Spacer(modifier = Modifier.height(24.dp))
-        Button(onClick = onNavigate) {
-            Text("Далі")
+        Button(onClick = onButtonsClicked) {
+            Text("Buttons")
         }
     }
 }

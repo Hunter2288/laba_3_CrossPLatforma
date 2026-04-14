@@ -24,11 +24,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.laba_3.screens.Buttons.ScreenButtons
 import com.example.laba_3.screens.Home.Home
 import laba_3.composeapp.generated.resources.back
+import laba_3.composeapp.generated.resources.buttons
 
 enum class AppScreen(val title: StringResource){
-    Home(title = Res.string.home)
+    Home(title = Res.string.home),
+    Buttons(title = Res.string.buttons)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -76,8 +79,12 @@ fun AppNavigation(){
                 .padding(innerPadding)
         ) {
             composable(route = AppScreen.Home.name) {
-                Home(onNavigate = { })
+                Home(onButtonsClicked = { navController.navigate(AppScreen.Buttons.name) })
             }
+            composable(route = AppScreen.Buttons.name) {
+                ScreenButtons(onButtonClicked = { })
+            }
+
             }
         }
     }
